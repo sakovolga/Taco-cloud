@@ -21,4 +21,12 @@ public class Taco {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Taco{" +
+                "name='" + name + '\'' +
+                ", ingredients=" + ingredients +
+                '}';
+    }
 }

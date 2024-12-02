@@ -1,6 +1,7 @@
 package sia.taco_cloud.controller;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
-    Logger log;
+    private static final Logger log = LoggerFactory.getLogger(DesignTacoController.class);
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
@@ -64,8 +65,7 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processTaco(Taco taco,
-                              @ModelAttribute TacoOrder tacoOrder) {
+    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
         tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
         return "redirect:/orders/current";
